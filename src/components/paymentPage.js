@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Tab, Input } from "semantic-ui-react";
+import { Modal, Button, Tab, Input, Table } from "semantic-ui-react";
 import Web3 from "web3";
 import ElectricCharginStationInstance from "../web3/ElectricCharginStationInstance";
 const HDwalletProvider = require("truffle-hdwallet-provider");
@@ -117,7 +117,27 @@ function panes(self, state) {
 		},
 		{
 			menuItem: "View Payment History",
-			render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>
+			render: () => (
+				<Tab.Pane attached={false}>
+					<Table celled selectable>
+						<Table.Header>
+							<Table.Row>
+								<Table.HeaderCell>Name</Table.HeaderCell>
+								<Table.HeaderCell>Status</Table.HeaderCell>
+								<Table.HeaderCell>Notes</Table.HeaderCell>
+							</Table.Row>
+						</Table.Header>
+
+						<Table.Body>
+							<Table.Row>
+								<Table.Cell>John</Table.Cell>
+								<Table.Cell>No Action</Table.Cell>
+								<Table.Cell>None</Table.Cell>
+							</Table.Row>
+						</Table.Body>
+					</Table>
+				</Tab.Pane>
+			)
 		}
 	];
 }
