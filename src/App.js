@@ -21,6 +21,7 @@ import image14 from "./images/14.jpg";
 import image6 from "./images/6.jpg";
 import image5 from "./images/5.jpg";
 import image15 from "./images/15.jpg";
+import hand from "./images/hand.png";
 import req from "./images/payWithRequest.jpg";
 import Web3 from "web3";
 import ElectricCharginStationInstance from "./web3/ElectricCharginStationInstance";
@@ -44,7 +45,7 @@ const client = new ApolloClient({
 
 const GRAVATARS_QUERY = gql`
 	query General($first: Int = 5) {
-		createds(first: 5) {
+		createds(first: 100) {
 			id
 			requestId
 			payee
@@ -149,6 +150,15 @@ class App extends React.Component {
 											src={req}
 											circular
 											style={{ marginTop: "10px" }}
+										/>
+										<Image
+											href="/"
+											size="tiny"
+											src={hand}
+											style={{
+												marginLeft: "180px",
+												marginTop: "-10px"
+											}}
 										/>
 									</Card.Content>
 								</Card>
