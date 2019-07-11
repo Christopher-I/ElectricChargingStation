@@ -1,3 +1,13 @@
+#PAY WITH CRYTPO APP FOR ELECTRIC CAR CHARGING STATIONS
+This app is designed allow electric car owners and charging stations keep track of transactions costs over time by using 
+request network protocol to manage invoicing and the graph protocol to keep track of all invoicing activity much as as the 
+number of invoiced created.
+
+#Run Dapp
+-Clone the dapp into your chosen directory
+-Inside the root directory, run 'npm i' to install all dependencies
+- run 'npm start' to boot the dapp.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
