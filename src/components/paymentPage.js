@@ -99,7 +99,9 @@ class PaymentPage extends React.Component {
 		});
 	}
 
-	acceptInvoice = async e => {};
+	acceptInvoice = async e => {
+		this.props.closeModal(e);
+	};
 
 	createInvoice = async e => {
 		e.preventDefault();
@@ -145,37 +147,8 @@ class PaymentPage extends React.Component {
 					<Tab
 						menu={{ secondary: true, pointing: true }}
 						loading={this.props.tab1Loading}
-						panes={panes(this, this.state)}
+						panes={panes(this, this.state, this.props)}
 					/>
-					{this.state.showInvoice && (
-						<Card style={{ height: "350px", width: "auto" }}>
-							<Card.Content>
-								<Card.Header>Invoice</Card.Header>
-								<Card.Meta>Recharge Car Batteries</Card.Meta>
-								<Card.Description>
-									Electric Station Account Number :
-									"0xc582ec7fb245c6e55bd26b7f968ef5028218ac3b"
-								</Card.Description>
-								<Card.Description>
-									Quanity : {this.state.paymentInKWH}
-								</Card.Description>
-								<Card.Description>
-									Cost : {this.state.paymentInETH}ETH
-								</Card.Description>
-								<Button
-									loading={
-										this.state.accceptInvoiceLoadingButton
-									}
-									onClick={this.acceptInvoice}
-									floated="right"
-									style={{ width: "150px" }}
-									primary
-								>
-									Accept Invoice and Pay
-								</Button>
-							</Card.Content>
-						</Card>
-					)}
 				</Modal.Content>
 
 				<Modal.Content />
@@ -196,7 +169,7 @@ class PaymentPage extends React.Component {
 }
 export default PaymentPage;
 
-function panes(self, state) {
+function panes(self, state, props) {
 	return [
 		{
 			menuItem: "Recharge",
@@ -233,6 +206,33 @@ function panes(self, state) {
 					>
 						Checkout
 					</Button>
+					{state.showInvoice && (
+						<Card style={{ height: "350px", width: "auto" }}>
+							<Card.Content>
+								<Card.Header>Invoice</Card.Header>
+								<Card.Meta>Recharge Car Batteries</Card.Meta>
+								<Card.Description>
+									Electric Station Account Number :
+									"0xc582ec7fb245c6e55bd26b7f968ef5028218ac3b"
+								</Card.Description>
+								<Card.Description>
+									Quanity : {state.paymentInKWH}
+								</Card.Description>
+								<Card.Description>
+									Cost : {state.paymentInETH}ETH
+								</Card.Description>
+								<Button
+									loading={state.accceptInvoiceLoadingButton}
+									onClick={self.acceptInvoice}
+									floated="right"
+									style={{ width: "150px" }}
+									primary
+								>
+									Accept Invoice and Pay
+								</Button>
+							</Card.Content>
+						</Card>
+					)}
 				</Tab.Pane>
 			)
 		},
